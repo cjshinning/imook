@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
-  render() {
+class App extends React.Component{
+  render(){
+    const boss = '李云龙';
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <h2>独立团，团长{boss}</h2>
+        <一营></一营>
       </div>
-    );
+    )
+  }
+}
+
+class 一营 extends React.Component{
+  render(){
+    const boss = '张大喵';
+    return (
+      <div>
+        <h2>一营营长，{boss}</h2>
+      </div>
+    )
   }
 }
 
