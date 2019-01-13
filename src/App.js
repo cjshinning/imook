@@ -25,6 +25,12 @@ class 一营 extends React.Component{
     }
     // this.addSolder = this.addSolder.bind(this);
   }
+  componentWillMount(){
+    console.log('组件马上就要挂载了。')
+  }
+  componentDidMount(){
+    console.log('组件已经挂载。')
+  }
   addSolder(){
     // console.log('add solder!');
     this.setState({
@@ -32,6 +38,7 @@ class 一营 extends React.Component{
     })
   }
   render(){
+    console.log('组件正在被挂载。')
     return (
       <div>
         <h2>一营营长，{this.props.老大}</h2>
