@@ -1,13 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import Es6 from './es6';
-import * as serviceWorker from './serviceWorker';
+import {createStore} from 'redux'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// 创建一个reducer
+// 根据旧的state和action生成新的state
+function counter(state=0,action){
+    switch(action.type){
+        case '加机关枪':
+            return state+1
+        case '减机关枪':
+            return state-1
+        default: 
+            return 10
+    }
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// 新建一个store
+let store=createStore(counter)
+
+function listener(){
+    let current=store.getState();
+    console.log(`现在有机枪${current}把`)
+}
+
+store.subscribe(listener)
+
+let init=store.getState()
+console.log(init)
+
+// 派发事件，传递action
+store.dispatch({type:'加机关枪'})
+
+store.dispatch({type:'加机关枪'})
+
+store.dispatch({type:'减机关枪'})
