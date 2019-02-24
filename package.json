@@ -44,6 +44,7 @@
     "react-app-polyfill": "^0.2.0",
     "react-dev-utils": "^7.0.0",
     "react-dom": "^16.7.0",
+    "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-chunk": "^1.0.11",
     "redux-thunk": "^2.3.0",
