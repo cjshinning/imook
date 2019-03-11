@@ -11,14 +11,9 @@ let store=createStore(counter,compose(
     window.devToolsExtension?window.devToolsExtension():f=>f
 ));
 
-function render(){
-    ReactDOM.render(
-        <Provider store={store}>
-            <App/>
-        </Provider>, 
-        document.getElementById('root'))
-}
-
-render()
-
-store.subscribe(render)
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>, 
+    document.getElementById('root')
+)
