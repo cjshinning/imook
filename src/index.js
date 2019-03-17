@@ -1,46 +1,33 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {createStore,applyMiddleware,compose} from 'redux'
-import {BrowserRouter,Route,Link,Redirect,Switch} from 'react-router-dom'
-import {counter,addGun,removeGun,addGunAsync} from './index.redux'
+import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
-import App from './App'
+import reducers from './reducer'
+import Auth from './Auth'
+import Dashboard from './Dashboard'
 
-let store=createStore(counter,compose(
+let store=createStore(reducers,compose(
     applyMiddleware(thunk),
     window.devToolsExtension?window.devToolsExtension():f=>f
 ));
 
-function Erying(){
-    return <h2>二营</h2>
-}
+// 登录
+//     没有登录信息，统一跳转login
+// 页面    导航+显示+注销
+//     一营
+//     二营
+//     骑兵连
 
-function Qibilian(){
-    return <h2>骑兵连</h2>
-}
-
-class Test extends React.Component{
-    render(){
-        console.log(this.props)
-        return <h2>测试组件{this.props.match.params.location}</h2>
-    }
-}
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <div>
-                <ul>
-                    <li><Link to='/'>一营</Link></li>
-                    <li><Link to='/erying'>二营</Link></li>
-                    <li><Link to='/qibilian'>骑兵连</Link></li>
-                </ul>
                 <Switch>
-                    <Route path='/' exact component={App}></Route>
-                    <Route path='/erying' component={Erying}></Route>
-                    <Route path='/qibilian' component={Qibilian}></Route>
-                    <Route path='/:location' component={Test}></Route>
+                    <Route path='/login' component={Auth}></Route>
+                    <Route path='/dashboard' component={Dashboard}></Route>
                 </Switch>
             </div>
         </BrowserRouter>
