@@ -2,12 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {addGun,removeGun,addGunAsync} from './index.redux'
 
-// const mapStatetoProps=(state)=>{
-//     return {num: state}
-// }
-// const actionCreator = {addGun,removeGun,addGunAsync}
-// App = connect(mapStatetoProps,actionCreator)(App)
-
 @connect(
     // 你要state里面什么输入放入props
     state=>({num: state.counter}),

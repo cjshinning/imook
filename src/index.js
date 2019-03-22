@@ -8,9 +8,9 @@ import reducers from './reducer'
 import Auth from './Auth'
 import Dashboard from './Dashboard'
 
-let store=createStore(reducers,compose(
-    applyMiddleware(thunk),
-    window.devToolsExtension?window.devToolsExtension():f=>f
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(
+    applyMiddleware(thunk)
 ));
 
 // 登录
@@ -19,7 +19,6 @@ let store=createStore(reducers,compose(
 //     一营
 //     二营
 //     骑兵连
-
 
 ReactDOM.render(
     <Provider store={store}>
@@ -34,5 +33,4 @@ ReactDOM.render(
     </Provider>, 
     document.getElementById('root')
 )
-
 
