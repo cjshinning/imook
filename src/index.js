@@ -5,8 +5,10 @@ import {BrowserRouter,Route,Switch} from 'react-router-dom'
 import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import reducers from './reducer'
-import Auth from './Auth'
-import Dashboard from './Dashboard'
+import './config'
+
+import Login from './container/login/login'
+import Register from './container/register/register'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(
@@ -24,10 +26,8 @@ ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
             <div>
-                <Switch>
-                    <Route path='/login' component={Auth}></Route>
-                    <Route path='/dashboard' component={Dashboard}></Route>
-                </Switch>
+                <Route path='/login' component={Login}></Route>
+                <Route path='/register' component={Register}></Route>
             </div>
         </BrowserRouter>
     </Provider>, 
