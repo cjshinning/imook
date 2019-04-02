@@ -10,6 +10,7 @@ import Register from './container/register/register'
 import AuthRoute from './component/authroute/authroute'
 import reducers from './reducer'
 import './config'
+import './index.css'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, composeEnhancers(

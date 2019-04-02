@@ -1,5 +1,4 @@
 import {combineReducers} from 'redux'
-import {auth} from './Auth.redux'
-import {counter} from './index.redux'
+import {user} from './redux/user.redux'
 
-export default combineReducers({auth,counter})
+export default combineReducers({user})
