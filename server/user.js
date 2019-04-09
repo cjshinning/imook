@@ -18,6 +18,21 @@ Router.get('/list', function(req, res){
     })
 })
 
+Router.post('/update', function(req, res){
+    const userid = req.cookies.userid
+	if (!userid) {
+		return json.dumps({code:1})
+	}
+    const body = req.body
+	User.findByIdAndUpdate(userid,body,{new: true},function(err,doc){
+		const data = Object.assign({},{
+			user:doc.user,
+			type:doc.type
+		},body)
+		return res.json({code:0,data})
+    })
+})
+
 Router.post('/login', function(req, res){
     const {user, pwd} = req.body
     User.findOne({user, pwd: md5Pwd(pwd)}, _filter, function(err, doc){
@@ -30,7 +45,6 @@ Router.post('/login', function(req, res){
 })
 
 Router.post('/register', function(req, res){
-    // console.log(req.body)
     const {user, pwd, type} = req.body
     User.findOne({user}, function(err, doc){
         if(doc) {
@@ -45,22 +59,14 @@ Router.post('/register', function(req, res){
             res.cookie('userid', _id)
             return res.json({code: 0, data: {user, type, _id}})
         })
-        // User.create({user, pwd: md5Pwd(pwd), type}, function(e,d){
-        //     if(e){
-        //         return res.json({code: 1, msg: '后端出错了'})
-        //     }
-        //     return res.json({code: 0})
-        // })
     })
 })
 
 Router.get('/info', function(req,res){
     const {userid} = req.cookies
-    // console.log(userid)
     if(!userid){
         return res.json({code: 1});
     }
-    // console.log(_id)
     User.findOne({"_id": ObjectId(userid)}, _filter, function(err, doc){
         if(err){
             return res.json({code: 1, msg: '后端出错了'})

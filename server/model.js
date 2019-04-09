@@ -13,7 +13,7 @@ const models = {
         'pwd': {type: String, required: true},
         'type': {'type': String, required: true},
         // 头像
-        'avatar': {type: String},
+        'avatar': {type: Object},
         // 个人简介或者职位简介
         'desc': {type: String},
         // 职位名
