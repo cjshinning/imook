@@ -15,7 +15,7 @@ const initState = {
 export function user(state=initState,action){
     switch(action.type){
         case AUTH_SUCCESS:
-            return {...state, msg: '', redirectTo: getRedirectPath(action.payload.type), ...action.payload}
+            return {...state, msg: '', redirectTo: getRedirectPath(action.payload), ...action.payload}
         case LOAD_DATA: 
             return {...state, ...action.payload}
         case ERROR_MSG:
@@ -25,7 +25,8 @@ export function user(state=initState,action){
     }
 }
 
-function authSuccess(data){
+function authSuccess(obj){
+    const {pwd, ...data} = obj
     return {type: AUTH_SUCCESS, payload: data}
 }
 
@@ -66,22 +67,44 @@ export function login({user,pwd}){
     }
 }
 
+// export function register({user,pwd,repeatpwd,type}){
+//     if(!user || !pwd || !type) {
+//         return errorMsg('用户名密码必须输入')
+//     }
+//     if(pwd !== repeatpwd){
+//         return errorMsg('密码和确认密码不同')
+//     }
+//     return dispatch => {
+//         axios.post('/user/register',{user,pwd,type})
+//             .then(res => {
+//                 if(res.status == 200 && res.data.code == 0){
+//                     dispatch(authSuccess({user, pwd, type}))
+//                 }else{
+//                     dispatch(errorMsg(res.data.msg))
+//                 }
+//             })
+//     }
+// }
+
 export function register({user,pwd,repeatpwd,type}){
-    if(!user || !pwd || !type) {
+    if(!user||!pwd||!type){
         return errorMsg('用户名密码必须输入')
     }
-    if(pwd !== repeatpwd){
+    console.log(pwd)
+    console.log(repeatpwd)
+    if(pwd!==repeatpwd){
         return errorMsg('密码和确认密码不同')
     }
     return dispatch => {
         axios.post('/user/register',{user,pwd,type})
-            .then(res => {
-                if(res.status == 200 && res.data.code == 0){
-                    dispatch(authSuccess({user, pwd, type}))
+            .then(res=>{
+                if(res.status===200&&res.data.code===0){
+                    dispatch(authSuccess({user,pwd,type}))
                 }else{
                     dispatch(errorMsg(res.data.msg))
                 }
             })
     }
+    
 }
 
