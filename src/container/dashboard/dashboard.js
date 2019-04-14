@@ -1,11 +1,10 @@
 import React from 'react'
 import { NavBar } from 'antd-mobile'
 import {connect} from 'react-redux'
+import {Switch,Route} from 'react-router-dom'
 import NavLinkBar from '../../component/navlink/navlink'
+import Boss from '../../component/boss/boss'
 
-function Boss(){
-    return <h2>Boss首页</h2>
-}
 function Genius(){
     return <h2>牛人首页</h2>
 }
@@ -58,7 +57,14 @@ class Dashboard extends React.Component{
         ]
         return (
             <div>
-                <NavBar mode="dark" >{navList.find(v=>v.path==pathname).title}</NavBar>
+                <NavBar mode="dark" className='fixd-header'>{navList.find(v=>v.path==pathname).title}</NavBar>
+                <div>
+                    <Switch>
+                        {navList.map(v=>(
+                            <Route key={v.path} path={v.path} component={v.component}/>
+                        ))}
+                    </Switch>
+                </div>
                 <NavLinkBar data={navList}></NavLinkBar>
             </div>
         )
