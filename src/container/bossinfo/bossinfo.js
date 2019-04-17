@@ -21,8 +21,6 @@ class BossInfo extends React.Component{
         this.handleChange = this.handleChange.bind(this)
     }
     handleChange(key, val){
-        console.log(key)
-        console.log(val)
         this.setState({
             [key]: val
         })

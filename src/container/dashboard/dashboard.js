@@ -4,15 +4,11 @@ import {connect} from 'react-redux'
 import {Switch,Route} from 'react-router-dom'
 import NavLinkBar from '../../component/navlink/navlink'
 import Boss from '../../component/boss/boss'
+import Genius from '../../component/gunius/genius'
+import User from '../../component/user/user'
 
-function Genius(){
-    return <h2>牛人首页</h2>
-}
 function Msg(){
     return <h2>消息列表页</h2>
-}
-function User(){
-    return <h2>个人中心页面</h2>
 }
 
 @connect(
