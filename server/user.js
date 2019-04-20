@@ -2,6 +2,7 @@ const express = require('express')
 const Router = express.Router()
 const models = require('./model')
 const User = models.getModel('user')
+const Chat = models.getModel('chat')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const utils = require('utility')
@@ -18,7 +19,14 @@ Router.get('/list', function(req, res){
         return res.json({code: 0, data: doc})
     })
 })
-
+Router.get('/getMsgList', function(req, res){
+    const userid = req.cookies.userid
+    Chat.find({}, function(err, doc){
+        if(!err){
+            return res.json({code: 0, data: doc})
+        }
+    })
+})
 Router.post('/update', function(req, res){
     const userid = req.cookies.userid
 	if (!userid) {
