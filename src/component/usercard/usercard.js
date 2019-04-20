@@ -1,15 +1,26 @@
 import React from 'react'
 import { Card, WingBlank, WhiteSpace } from 'antd-mobile'
 import PropTypes from 'prop-types'
+import {withRouter} from 'react-router-dom'
+
+@withRouter
 
 class UserCard extends React.Component{
+    handleClick(v){
+        console.log(v)
+        this.props.history.push(`/chat:${v.user}`)
+    }
     render(){
         const Header = Card.Header
         const Body = Card.Body
         return (
             <WingBlank>
                 {this.props.userlist.map(v=>(
-                    v.avatar?(<Card key={v._id}>
+                    v.avatar?(
+                    <Card 
+                        key={v._id}
+                        onClick={()=>this.handleClick(v)}
+                    >
                         <Header
                             title={v.user}
                             thumb={require(`../img/${v.avatar}.png`)}
