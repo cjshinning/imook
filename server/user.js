@@ -12,6 +12,7 @@ const ObjectId = require('mongodb').ObjectID;
 Router.use(bodyParser())
 Router.use(cookieParser())
 
+// Chat.remove({},function(e,d){})
 Router.get('/list', function(req, res){
     // User.remove({}, function(err, doc){})
     const {type} = req.query

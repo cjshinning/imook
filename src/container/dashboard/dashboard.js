@@ -18,6 +18,7 @@ function Msg(){
 class Dashboard extends React.Component{
     render(){
         const pathname = this.props.location.pathname
+        console.log(`dashboard路径名：${pathname}`)
         const user = this.props.user
         const navList = [
             {
@@ -54,7 +55,7 @@ class Dashboard extends React.Component{
         return (
             <div>
                 <NavBar mode="dark" className='fixd-header'>{navList.find(v=>v.path==pathname).title}</NavBar>
-                <div>
+                <div style={{marginTop:45}}>
                     <Switch>
                         {navList.map(v=>(
                             <Route key={v.path} path={v.path} component={v.component}/>
