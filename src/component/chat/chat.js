@@ -2,11 +2,11 @@ import React from 'react'
 import {List, InputItem, NavBar, Icon, Grid} from 'antd-mobile'
 import {connect} from 'react-redux'
 import {getChatId} from '../../util'
-import {getMsgList,sendMsg,recvMsg} from '../../redux/chat.redux'
+import {getMsgList,sendMsg,recvMsg,readMsg} from '../../redux/chat.redux'
 
 @connect(
     state=>state,
-    {getMsgList,sendMsg,recvMsg}
+    {getMsgList,sendMsg,recvMsg,readMsg}
 )
 
 class Chat extends React.Component{
@@ -19,10 +19,19 @@ class Chat extends React.Component{
         }
     }
     componentDidMount(){
+        console.log(this.props)
         if(!this.props.chat.chatmsg.length){
             this.props.getMsgList()
             this.props.recvMsg()
+            // const to = this.props.match.params.user
+            // console.log(to)
+            // this.props.readMsg(to)
         }
+    }
+    componentWillUnmount(){
+        console.log('unmout')
+        const to = this.props.match.params.user
+        this.props.readMsg(to)
     }
     fixCarousel(){
         setTimeout(function(){
