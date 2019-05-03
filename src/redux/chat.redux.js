@@ -44,16 +44,16 @@ function msgRead({from,userid,num}){
 }
 
 export function readMsg(from){
-    return (dispatch,getState) => {
-        axios.post('/user/readmsg',{from})
-            .then(res => {
+    return async(dispatch,getState) => {
+        const res = await axios.post('/user/readmsg',{from})
+            // .then(res => {
                 const userid = getState().user._id
                 console.log(userid)
                 if(res.status == 200 && res.data.code==0){
                     console.log(res.data)
                     dispatch(msgRead({userid, from, num: res.data.num}))
                 }
-            })
+            // })
     }
 }
 
