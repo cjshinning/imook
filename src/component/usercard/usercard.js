@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, WingBlank, WhiteSpace } from 'antd-mobile'
+import { Card, WingBlank } from 'antd-mobile'
 import PropTypes from 'prop-types'
 import {withRouter} from 'react-router-dom'
 
@@ -42,6 +42,6 @@ class UserCard extends React.Component{
 
 UserCard.propTypes = {
     userlist: PropTypes.array.isRequired
-};
+}
 
 export default UserCard

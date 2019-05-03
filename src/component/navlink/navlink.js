@@ -37,7 +37,7 @@ class NavLinkBar extends React.Component{
 
 NavLinkBar.propTypes = {
     data: PropTypes.array.isRequired
-};
+}
 
 
 export default NavLinkBar

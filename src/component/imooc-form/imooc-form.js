@@ -3,7 +3,7 @@ import React from 'react'
 export default function imoocForm(Comp){
     return class WrapperComp extends React.Component{
         constructor(){
-            super();
+            super()
             this.state = {}
             this.handleChange = this.handleChange.bind(this)
         }

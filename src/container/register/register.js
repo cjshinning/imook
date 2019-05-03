@@ -24,7 +24,7 @@ class Register extends React.Component{
         this.props.register(this.props.state)
     }
     render(){
-        const RadioItem = Radio.RadioItem;
+        const RadioItem = Radio.RadioItem
         return (
             <div>
                 {this.props.redirectTo ? <Redirect to={this.props.redirectTo}/> : null}

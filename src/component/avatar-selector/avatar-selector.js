@@ -44,6 +44,6 @@ class AvatarSelector extends React.Component{
 
 AvatarSelector.propTypes = {
     selectAvatar: PropTypes.func.isRequired
-};
+}
 
 export default AvatarSelector

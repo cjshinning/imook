@@ -84,7 +84,7 @@ class Chat extends React.Component{
                         <List key={v._id}>
                             <Item
                                 className='chat-me'
-                                extra={<img src={avatar}/>}
+                                extra={<img alt='头像' src={avatar}/>}
                             >{v.content}</Item>
                         </List>
                     )
