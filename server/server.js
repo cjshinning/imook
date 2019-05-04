@@ -5,6 +5,9 @@ import mongoose from 'mongoose'
 import models from './model'
 import path from 'path'
 import React from 'react'
+import ReactDOMServer from 'react-dom/server'
+import {renderToString} from 'react'
+
 const Chat = models.getModel('chat')
 const app = express()
 const userRouter = require('./user')
@@ -12,12 +15,15 @@ const userRouter = require('./user')
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
-class App extends React.Component{
-    render(){
-        return <h2>server render</h2>
-    }
+function App(){
+    return (
+        <div>
+            <p>server render</p>
+            <p>react rocks!</p>
+        </div>
+    )
 }
-console.log(App)
+
 io.on('connection',function(socket){
     // console.log('user login')
     socket.on('sendmsg',function(data){
@@ -42,6 +48,8 @@ app.use(function(req,res,next){
     if(req.url.startsWith('/user/') || req.url.startsWith('/static/')){
         return next()
     }
+    const htmlRes = ReactDOMServer.renderToString(<App></App>)
+    res.send(htmlRes)
     // console.log('path resolve:'+path.resolve('build/index.html'))
     return res.sendFile(path.resolve('build/index.html'))
 })
