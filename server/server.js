@@ -1,14 +1,23 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const models = require('./model')
+
+import express from 'express'
+// const express = require('express')
+import mongoose from 'mongoose'
+import models from './model'
+import path from 'path'
+import React from 'react'
 const Chat = models.getModel('chat')
 const app = express()
 const userRouter = require('./user')
-const path = require('path')
 
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
+class App extends React.Component{
+    render(){
+        return <h2>server render</h2>
+    }
+}
+console.log(App)
 io.on('connection',function(socket){
     // console.log('user login')
     socket.on('sendmsg',function(data){
