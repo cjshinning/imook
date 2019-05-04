@@ -58,10 +58,9 @@ class Dashboard extends React.Component{
             },
         ]
         const page = navList.find(v=>v.path==pathname)
-        console.log(page)
         return (
             <div>
-                <NavBar mode="dark" className='fixd-header'>{navList.find(v=>v.path==pathname).title}</NavBar>
+                <NavBar mode="dark" className='fixd-header'>{page.title}</NavBar>
                 <div style={{marginTop:45}}>
                     <QueueAnim type='scaleX' duration={800}>
                         <Route key={page.path} path={page.path} component={page.component}/>

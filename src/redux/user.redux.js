@@ -78,8 +78,6 @@ export function register({user,pwd,repeatpwd,type}){
     if(!user||!pwd||!type){
         return errorMsg('用户名密码必须输入')
     }
-    console.log(pwd)
-    console.log(repeatpwd)
     if(pwd!==repeatpwd){
         return errorMsg('密码和确认密码不同')
     }

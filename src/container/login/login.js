@@ -69,7 +69,7 @@ class Login extends React.Component{
     }
     handleLogin(){
         // console.log(this.state)
-        console.log(this.props.state)
+        // console.log(this.props.state)
         this.props.login(this.props.state)
     }
     register(){

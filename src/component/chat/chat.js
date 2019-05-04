@@ -20,7 +20,6 @@ class Chat extends React.Component{
         }
     }
     componentDidMount(){
-        console.log(this.props)
         if(!this.props.chat.chatmsg.length){
             this.props.getMsgList()
             this.props.recvMsg()
@@ -30,7 +29,6 @@ class Chat extends React.Component{
         }
     }
     componentWillUnmount(){
-        console.log('unmout')
         const to = this.props.match.params.user
         this.props.readMsg(to)
     }
